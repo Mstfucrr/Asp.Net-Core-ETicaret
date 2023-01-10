@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{B9C6334A-9281-49DF-81C9-400FC4037D7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{647EF38F-CBAE-4CBE-9827-451C7B22C484}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9AB0ECC1-9DEB-4D0C-A23B-FE8EA2653C12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaret.MVC", "Presentation\ETicaret.MVC\ETicaret.MVC.csproj", "{9F263D2E-717C-4FA0-BA6A-E7BB34A90715}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaret.Infrastructure", "Infrastructure\ETicaret.Infrastructure\ETicaret.Infrastructure.csproj", "{C0B1F2E1-5B18-4440-AE7E-030E58549624}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaret.Domain", "Core\ETicaret.Domain\ETicaret.Domain.csproj", "{7112F336-25B3-4E8C-BFE7-727714E93E40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaret.Presistence", "Infrastructure\ETicaret.Presistence\ETicaret.Presistence.csproj", "{43E95DA7-5126-4ABD-87D0-6B85F496CC60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETicaret.Application", "Core\ETicaret.Application\ETicaret.Application.csproj", "{282401AE-E6BB-493E-AD1C-B796B1CBD3A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F263D2E-717C-4FA0-BA6A-E7BB34A90715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F263D2E-717C-4FA0-BA6A-E7BB34A90715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F263D2E-717C-4FA0-BA6A-E7BB34A90715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F263D2E-717C-4FA0-BA6A-E7BB34A90715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B1F2E1-5B18-4440-AE7E-030E58549624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B1F2E1-5B18-4440-AE7E-030E58549624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B1F2E1-5B18-4440-AE7E-030E58549624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B1F2E1-5B18-4440-AE7E-030E58549624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7112F336-25B3-4E8C-BFE7-727714E93E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7112F336-25B3-4E8C-BFE7-727714E93E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7112F336-25B3-4E8C-BFE7-727714E93E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7112F336-25B3-4E8C-BFE7-727714E93E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43E95DA7-5126-4ABD-87D0-6B85F496CC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E95DA7-5126-4ABD-87D0-6B85F496CC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E95DA7-5126-4ABD-87D0-6B85F496CC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E95DA7-5126-4ABD-87D0-6B85F496CC60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282401AE-E6BB-493E-AD1C-B796B1CBD3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282401AE-E6BB-493E-AD1C-B796B1CBD3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282401AE-E6BB-493E-AD1C-B796B1CBD3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282401AE-E6BB-493E-AD1C-B796B1CBD3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F263D2E-717C-4FA0-BA6A-E7BB34A90715} = {B9C6334A-9281-49DF-81C9-400FC4037D7F}
+		{C0B1F2E1-5B18-4440-AE7E-030E58549624} = {9AB0ECC1-9DEB-4D0C-A23B-FE8EA2653C12}
+		{7112F336-25B3-4E8C-BFE7-727714E93E40} = {647EF38F-CBAE-4CBE-9827-451C7B22C484}
+		{43E95DA7-5126-4ABD-87D0-6B85F496CC60} = {9AB0ECC1-9DEB-4D0C-A23B-FE8EA2653C12}
+		{282401AE-E6BB-493E-AD1C-B796B1CBD3A3} = {647EF38F-CBAE-4CBE-9827-451C7B22C484}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FE818D7-1B3A-4D69-912E-A60F1A100DD6}
+	EndGlobalSection
+EndGlobal
