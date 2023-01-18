@@ -3,6 +3,7 @@ using System;
 using ETicaret.Presistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ETicaret.Presistence.Migrations
 {
     [DbContext(typeof(ETicaretDbContext))]
-    partial class ETicaretDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230118160556_mig_4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +42,7 @@ namespace ETicaret.Presistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("ParentCategoryId")
+                    b.Property<Guid>("ParentCategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Slug")
@@ -308,7 +311,9 @@ namespace ETicaret.Presistence.Migrations
                 {
                     b.HasOne("ETicaret.Domain.Entities.Category", "ParentCategory")
                         .WithMany("ChildCategories")
-                        .HasForeignKey("ParentCategoryId");
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ParentCategory");
                 });
