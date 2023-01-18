@@ -14,18 +14,13 @@ namespace ETicaret.Domain.Entities
         public virtual Category Category { get; set; }
         public string Slug { get; set; }
 
-        public Product()
-        {
-            //Slug = GenerateSlug(Name);
-        }
-
-        public static string GenerateSlug(string title)
+        
+        public void GenerateSlug()
         {
             // Düzeltilmiş başlığı tutacak değişken
-            var slug = "";
 
-            // Başlıktaki tüm harfleri küçültün
-            slug = title.ToLowerInvariant();
+                // Başlıktaki tüm harfleri küçültün
+            var slug = Name.ToLower();
 
             // Başlıktaki tüm özel karakterleri kaldırın
             slug = Replace(slug, @"[^a-z0-9\s-]", "");
@@ -37,7 +32,7 @@ namespace ETicaret.Domain.Entities
             slug = Replace(slug, @"\s", "-");
 
             // Slug'ı döndürün
-            return slug;
+            Slug = slug;
         }
 
     }
