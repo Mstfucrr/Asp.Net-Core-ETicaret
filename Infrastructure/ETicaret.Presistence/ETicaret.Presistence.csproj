@@ -20,4 +20,9 @@
     <ProjectReference Include="..\..\Core\ETicaret.Domain\ETicaret.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Shop\Product\" />
+    <Folder Include="Repositories\Users\Customer\" />
+  </ItemGroup>
+
 </Project>
