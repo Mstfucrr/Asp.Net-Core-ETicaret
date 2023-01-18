@@ -8,7 +8,13 @@ namespace ETicaret.Presistence.Repositories
     public class WriteRepository<T> : IWriteRepository<T> where T: BaseEntity
     {
         private readonly ETicaretDbContext _context;
-        public DbSet<T> Table { get; }
+
+        public WriteRepository(ETicaretDbContext context)
+        {
+            _context = context;
+        }
+
+        public DbSet<T> Table => _context.Set<T>();
 
         public async Task<bool> AddAsync(T entity)
         {
@@ -28,21 +34,26 @@ namespace ETicaret.Presistence.Repositories
             return Task.FromResult(_context.SaveChanges() > 0);
         }
 
+        public bool DeleteRange(List<T> entities)
+        {
+            Table.RemoveRange(entities);
+            return _context.SaveChanges() > 0;
+        }
+
         public bool Delete(T entity)
         {
             var entityEntry = Table.Remove(entity);
             return entityEntry.State == EntityState.Deleted; 
         }
 
-        public bool Delete(string id)
+        public async Task<bool> DeleteAsync(string id)
         {
-            var entityEntry = Table.Remove(Table.FirstOrDefault(x => x.Id == Guid.Parse(id)));
-            return entityEntry.State == EntityState.Deleted;
+            var entity = await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+            return Delete(entity);
         }
 
-        public Task<int> SaveAsync()
-        {
-            return _context.SaveChangesAsync();
-        }
+        public async Task<int> SaveAsync()
+            => await _context.SaveChangesAsync();
+
     }
 }

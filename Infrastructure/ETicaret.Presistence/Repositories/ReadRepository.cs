@@ -9,6 +9,12 @@ namespace ETicaret.Presistence.Repositories
     public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
     {
         private readonly ETicaretDbContext _context;
+
+        public ReadRepository(ETicaretDbContext context)
+        {
+            _context = context;
+        }
+
         public DbSet<T> Table => _context.Set<T>();
         public IQueryable<T> GetAll() 
             => Table;
