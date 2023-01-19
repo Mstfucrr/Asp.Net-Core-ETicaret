@@ -23,7 +23,7 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index() // Task olduğu için serviceRegistration scope patlamıyor eğer void olsaydı serviceRegistration singelton olmalıydı
     {
         //var category = new Category
         //{
@@ -72,8 +72,9 @@ public class CategoryController : Controller
         var categories = _categoryReadRepository.GetAll().ToList();
         var products = _productReadRepository.GetAll().ToList();
 
+        var c = _categoryReadRepository.GetWhere(t=> t.Slug == "testname-as").First();
 
-
+        
         
         //if (cs == null)
         //{
