@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ETicaret.Presistence.Migrations
 {
     [DbContext(typeof(ETicaretDbContext))]
-    [Migration("20230118155126_mig_3")]
+    [Migration("20230118230814_mig_3")]
     partial class mig3
     {
         /// <inheritdoc />
@@ -32,7 +32,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -52,6 +52,9 @@ namespace ETicaret.Presistence.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ParentCategoryId");
@@ -70,7 +73,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
@@ -88,6 +91,9 @@ namespace ETicaret.Presistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -104,10 +110,10 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Birthdate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -125,6 +131,9 @@ namespace ETicaret.Presistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
@@ -137,7 +146,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uuid");
@@ -148,6 +157,9 @@ namespace ETicaret.Presistence.Migrations
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -163,7 +175,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
@@ -176,6 +188,9 @@ namespace ETicaret.Presistence.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -196,7 +211,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -222,6 +237,9 @@ namespace ETicaret.Presistence.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -238,7 +256,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -255,6 +273,9 @@ namespace ETicaret.Presistence.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -280,7 +301,7 @@ namespace ETicaret.Presistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("CustomerId")
                         .HasColumnType("uuid");
@@ -294,6 +315,9 @@ namespace ETicaret.Presistence.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("text");

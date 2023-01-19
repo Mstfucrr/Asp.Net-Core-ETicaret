@@ -5,10 +5,7 @@ namespace ETicaret.Presistence.Contexts
     public class ETicaretDbContext : DbContext
     {
         public ETicaretDbContext(DbContextOptions<ETicaretDbContext> options) : base(options)
-        {
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
-        }
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
