@@ -10,9 +10,9 @@ namespace ETicaret.Domain.Entities
         public string Description { get; set; }
         public bool Status { get; set; }
         public string Slug { get; set; }
-        [JsonIgnore]
         public virtual Category? ParentCategory { get; set; }
         public virtual Guid? ParentCategoryId { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Category>? ChildCategories { get; set; }
         [JsonIgnore]
         public virtual ICollection<Product> Products { get; set; }

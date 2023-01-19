@@ -1,6 +1,7 @@
 ﻿using ETicaret.Application.Repositories.Shop;
 using ETicaret.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ETicaret.MVC.Controllers;
 
@@ -24,13 +25,65 @@ public class CategoryController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var category = await _categoryReadRepository.GetyIdAsync("1da398a1-8797-43a6-99d5-e95cbbeaded4");
+        //var category = new Category
+        //{
+        //    Name = "TestName as üğ",
+        //    Description = "TestDescription",
+        //    CreatedDate = DateTime.UtcNow,
+        //    UpdatedDate = DateTime.UtcNow,
+        //    Id = Guid.NewGuid(),
+        //    Status = true,
+        //};
+        //category.CreateSlug();
+        //var category2 = new Category
+        //{
+        //    Name = "TestName as üğ",
+        //    Description = "TestDescription",
+        //    CreatedDate = DateTime.UtcNow,
+        //    UpdatedDate = DateTime.UtcNow,
+        //    Id = Guid.NewGuid(),
+        //    Status = true,
+        //    ParentCategory = category,
+        //};
+        //category2.CreateSlug();
+        
+        //var product = new Product
+        //{
+        //    Name = "TestProductName ö",
+        //    Description = "TestProductDescription",
+        //    CreatedDate = DateTime.UtcNow,
+        //    UpdatedDate = DateTime.UtcNow,
+        //    Id = Guid.NewGuid(),
+        //    Status = true,
+        //    Category = category2,
+        //    Price = 100.214m,
+        //    Stock = 100,
+        //};
+        //product.GenerateSlug();
+        
+        
+        //await _categoryWriteRepository.AddRangeAsync(new List<Category>
+        //{
+        //    category,category2
+        //});
+        //await _productWriteRepository.AddAsync(product);
+        //await _categoryWriteRepository.SaveAsync();
+        //await _productWriteRepository.SaveAsync();
+        var categories = _categoryReadRepository.GetAll().ToList();
+        var products = _productReadRepository.GetAll().ToList();
 
-        var product = await _productReadRepository.GetyIdAsync("ea8c8604-2881-4484-b6c5-7874a18ade5e");
-
-        var p = _productReadRepository.GetyIdAsync(product.Id.ToString()).Result;
 
 
-        return Ok(new { category, p});
+        
+        //if (cs == null)
+        //{
+        //    return Ok(cs);
+        //}
+        //var product = await _productReadRepository.GetyIdAsync("ea8c8604-2881-4484-b6c5-7874a18ade5e");
+
+        //var p = _productReadRepository.GetyIdAsync(product.Id.ToString()).Result;
+
+
+        return Ok(new { categories, products });
     }
 }
