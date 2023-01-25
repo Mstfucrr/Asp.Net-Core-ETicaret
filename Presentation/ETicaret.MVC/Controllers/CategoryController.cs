@@ -13,8 +13,11 @@ public class CategoryController : Controller
     private readonly IProductWriteRepository _productWriteRepository;
 
     private readonly IProductReadRepository _productReadRepository;
+
     // GET
-    public CategoryController(ICategoryWriteRepository categoryWriteRepository, ICategoryReadRepository categoryReadRepository, IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository)
+    public CategoryController(ICategoryWriteRepository categoryWriteRepository,
+        ICategoryReadRepository categoryReadRepository, IProductReadRepository productReadRepository,
+        IProductWriteRepository productWriteRepository)
     {
         _categoryWriteRepository = categoryWriteRepository;
         _categoryReadRepository = categoryReadRepository;
@@ -46,7 +49,7 @@ public class CategoryController : Controller
         //    ParentCategory = category,
         //};
         //category2.CreateSlug();
-        
+
         //var product = new Product
         //{
         //    Name = "TestProductName ö",
@@ -60,8 +63,8 @@ public class CategoryController : Controller
         //    Stock = 100,
         //};
         //product.GenerateSlug();
-        
-        
+
+
         //await _categoryWriteRepository.AddRangeAsync(new List<Category>
         //{
         //    category,category2
@@ -72,10 +75,10 @@ public class CategoryController : Controller
         var categories = _categoryReadRepository.GetAll().ToList();
         var products = _productReadRepository.GetAll().ToList();
 
-        var c = _categoryReadRepository.GetWhere(t=> t.Slug == "testname-as").First();
+        var c = _categoryReadRepository.GetyIdAsync("62b87bd0-c125-48be-9dc9-08e562b2acd9").Result;
 
-        
-        
+
+
         //if (cs == null)
         //{
         //    return Ok(cs);
@@ -87,4 +90,16 @@ public class CategoryController : Controller
 
         return Ok(new { categories, products });
     }
+
+    [HttpGet("{slug}")]
+    public async Task<IActionResult> Index(string slug)
+    {
+        var products = await _productReadRepository.GetAll().Where(p => p.Category.Slug.Contains(slug)).Include(p=> p.Category).ToListAsync();
+        //products.Category.Name = "Denem1";
+        //await _categoryWriteRepository.SaveAsync();
+        //var prs = await _productReadRepository.GetyIdAsync("1b3cd2a3-656c-460d-889a-6af56f323c99");
+
+        return Ok(products);
+    }
+
 }

@@ -5,10 +5,10 @@ namespace ETicaret.Application.Repositories
 {
     public interface IReadRepository<T> : IRepository<T> where T : BaseEntity
     {
-        IQueryable<T> GetAll();
-        IQueryable<T> GetWhere(Expression<Func<T, bool>> method);
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> method);
-        Task<T> GetyIdAsync(string id);
+        IQueryable<T> GetAll(bool tracking = true);
+        IQueryable<T> GetWhere(Expression<Func<T, bool>> method, bool tracking = true);
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> method, bool tracking = true);
+        Task<T> GetyIdAsync(string id, bool tracking = true);
         //T GetBySlug(string slug);
     }
 }
