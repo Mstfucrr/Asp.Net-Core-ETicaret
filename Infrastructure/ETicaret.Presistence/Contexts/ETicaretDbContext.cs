@@ -1,5 +1,8 @@
 ﻿using ETicaret.Domain.Entities;
+using ETicaret.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
 namespace ETicaret.Presistence.Contexts
 {
     public class ETicaretDbContext : DbContext
@@ -27,6 +30,24 @@ namespace ETicaret.Presistence.Contexts
         public DbSet<Seller> Sellers { get; set; }
 
 
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var datas = ChangeTracker.Entries<BaseEntity>();
 
+            foreach (var entityEntry in datas)
+            {
+                switch (entityEntry.State)
+                {
+                    case EntityState.Added:
+                        entityEntry.Entity.CreatedDate = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        entityEntry.Entity.UpdatedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
     }
 }

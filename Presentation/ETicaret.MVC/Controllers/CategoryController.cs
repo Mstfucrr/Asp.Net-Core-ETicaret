@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ETicaret.MVC.Controllers;
 
+[Route("/[controller]")]
 public class CategoryController : Controller
 {
     private readonly ICategoryWriteRepository _categoryWriteRepository;
@@ -91,15 +92,24 @@ public class CategoryController : Controller
         return Ok(new { categories, products });
     }
 
-    [HttpGet("{slug}")]
+    [Route("category/{slug}")]
+    [HttpGet("{slug}")] 
     public async Task<IActionResult> Index(string slug)
     {
+        
+
         var products = await _productReadRepository.GetAll().Where(p => p.Category.Slug.Contains(slug)).Include(p=> p.Category).ToListAsync();
+
+
+        var category = await _categoryReadRepository.GetSingleAsync(c => c.CreatedDate.Day == 4);
+
+        
+
         //products.Category.Name = "Denem1";
         //await _categoryWriteRepository.SaveAsync();
         //var prs = await _productReadRepository.GetyIdAsync("1b3cd2a3-656c-460d-889a-6af56f323c99");
 
-        return Ok(products);
+        return Ok(new { products });
     }
 
 }

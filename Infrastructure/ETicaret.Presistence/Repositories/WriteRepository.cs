@@ -30,7 +30,8 @@ namespace ETicaret.Presistence.Repositories
 
         public Task<bool> UpdateAsync(T entity)
         {
-            Table.Update(entity);
+            var entityEntry = Table.Update(entity);
+            entityEntry.State = EntityState.Modified;
             return Task.FromResult(_context.SaveChanges() > 0);
         }
 
