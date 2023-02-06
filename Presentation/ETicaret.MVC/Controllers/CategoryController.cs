@@ -103,7 +103,10 @@ public class CategoryController : Controller
 
         var category = await _categoryReadRepository.GetSingleAsync(c => c.CreatedDate.Day == 4);
 
-        
+        category.Name = "TestName update";
+        await _categoryWriteRepository.UpdateAsync(category);
+        await _categoryWriteRepository.SaveAsync();
+
 
         //products.Category.Name = "Denem1";
         //await _categoryWriteRepository.SaveAsync();

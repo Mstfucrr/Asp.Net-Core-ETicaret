@@ -1,14 +1,15 @@
 ﻿using ETicaret.Domain.Entities;
 using ETicaret.Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ETicaret.Presistence.Contexts
 {
     public class ETicaretDbContext : DbContext
     {
         public ETicaretDbContext(DbContextOptions<ETicaretDbContext> options) : base(options)
-        { }
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,10 +40,10 @@ namespace ETicaret.Presistence.Contexts
                 switch (entityEntry.State)
                 {
                     case EntityState.Added:
-                        entityEntry.Entity.CreatedDate = DateTime.UtcNow;
+                        entityEntry.Entity.CreatedDate = DateTime.Now;
                         break;
                     case EntityState.Modified:
-                        entityEntry.Entity.UpdatedDate = DateTime.UtcNow;
+                        entityEntry.Entity.UpdatedDate = DateTime.Now;
                         break;
                 }
             }

@@ -28,11 +28,10 @@ namespace ETicaret.Presistence.Repositories
             return true;
         }
 
-        public Task<bool> UpdateAsync(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
             var entityEntry = Table.Update(entity);
-            entityEntry.State = EntityState.Modified;
-            return Task.FromResult(_context.SaveChanges() > 0);
+            return entityEntry.State == EntityState.Modified; 
         }
 
         public bool DeleteRange(List<T> entities)
