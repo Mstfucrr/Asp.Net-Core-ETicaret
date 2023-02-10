@@ -14,16 +14,19 @@ public class CategoryController : Controller
     private readonly IProductWriteRepository _productWriteRepository;
 
     private readonly IProductReadRepository _productReadRepository;
-
+    private readonly IOrderReadRepository _orderReadRepository;
+    private readonly IOrderWriteRepository _orderWriteRepository;
     // GET
     public CategoryController(ICategoryWriteRepository categoryWriteRepository,
         ICategoryReadRepository categoryReadRepository, IProductReadRepository productReadRepository,
-        IProductWriteRepository productWriteRepository)
+        IProductWriteRepository productWriteRepository, IOrderReadRepository orderReadRepository, IOrderWriteRepository orderWriteRepository)
     {
         _categoryWriteRepository = categoryWriteRepository;
         _categoryReadRepository = categoryReadRepository;
         _productReadRepository = productReadRepository;
         _productWriteRepository = productWriteRepository;
+        _orderReadRepository = orderReadRepository;
+        _orderWriteRepository = orderWriteRepository;
     }
 
     [HttpGet]
@@ -77,9 +80,13 @@ public class CategoryController : Controller
         var products = _productReadRepository.GetAll().ToList();
 
         var c = _categoryReadRepository.GetyIdAsync("62b87bd0-c125-48be-9dc9-08e562b2acd9").Result;
+        //await _orderWriteRepository.AddAsync(new Order()
+        //{
+        //    OrderNumber = "123123",
+        //    TotalPrice = 1112.23M
+        //});
 
-
-
+        //await _orderWriteRepository.SaveAsync();
         //if (cs == null)
         //{
         //    return Ok(cs);
@@ -87,7 +94,7 @@ public class CategoryController : Controller
         //var product = await _productReadRepository.GetyIdAsync("ea8c8604-2881-4484-b6c5-7874a18ade5e");
 
         //var p = _productReadRepository.GetyIdAsync(product.Id.ToString()).Result;
-
+        
 
         return Ok(new { categories, products });
     }
