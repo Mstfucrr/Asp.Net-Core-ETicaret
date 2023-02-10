@@ -11,7 +11,8 @@ namespace ETicaret.Domain.Entities
         public bool Status { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        public virtual Category Category { get; set; }
+        public Guid CategoryId { get; set; }
+        public virtual Category? Category { get; set; }
         public string Slug { get; set; }
 
         
